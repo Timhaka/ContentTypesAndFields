@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+  <pnp:SiteFields>
+    <Field ID="{4A1E9426-B7FA-4305-9548-8D7B23BC1C6B}" Type="Choice" Name="TIM_Position" DisplayName="Position" Group="Tims Coloums" Format="RadioButtons" FillInChoice="FALSE">
+    <Default></Default>
+    <CHOICES>
+      <CHOICE>Goal</CHOICE>
+      <CHOICE>Defence</CHOICE>
+      <CHOICE>Forward</CHOICE>
+    </CHOICES>
+    </Field>
+    <Field ID="{8044810E-EFB9-4C22-874A-D5F22E4F5329}" Type="Number" Name="TIM_ShirtNumber" DisplayName="Shirt Number" Min="0" Max="100" Group="Tims Coloums" />
+    <Field ID="{A0C00C03-26BC-4430-A364-88FFACDD5BA2}" Type="Text" Name="TIM_TeamName" DisplayName="Team" Group="Tims Coloums"/>
+    <Field ID="{DC44ED18-1B76-48E6-BD3E-365AD7969CB3}" Type="Note" Name="TIM_Description" DisplayName="Description" Group="Tims Coloums" NumLines="6" RichText="TRUE" RichTextMode="FullHtml"/>
+
+  </pnp:SiteFields>
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x01008E4F86DC06F241EA9FE6F7AF5ABB69B9"
+                     Name="HockeyPlayers"
+                      Group="Tims Coloums"
+                      Description="Content Type for HockeyPlayers">
+      <pnp:FieldRefs>
+        <!-- TIM_Position -->
+        <pnp:FieldRef ID="{4A1E9426-B7FA-4305-9548-8D7B23BC1C6B}" />
+        <!-- TIM_ShirtNumber -->
+        <pnp:FieldRef ID="{8044810E-EFB9-4C22-874A-D5F22E4F5329}"  />
+        <!-- TIM_TeamName -->
+        <pnp:FieldRef ID="{A0C00C03-26BC-4430-A364-88FFACDD5BA2}"  />
+        <!-- TIM_Description -->
+        <pnp:FieldRef ID="{DC44ED18-1B76-48E6-BD3E-365AD7969CB3}"  />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Hockey Players"
+                Description="List of Hockey Players"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/HockeyPlayers"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x01008E4F86DC06F241EA9FE6F7AF5ABB69B9" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+  
+  
+  
+
+  
+</pnp:ProvisioningTemplate>

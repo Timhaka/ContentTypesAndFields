@@ -320,6 +320,8 @@ namespace ContentTypesAndFields.CodeExamples
             //Have to look on camlQuery more.
             info.Query = @"<Where><Eq><FieldRef Name='DAV_IsActive' /><Value Type='Integer'>1</Value></Eq></Where>";
             list.Views.Add(info);
+            list.Update();
+            ctx.ExecuteQuery();
 
         }
 
