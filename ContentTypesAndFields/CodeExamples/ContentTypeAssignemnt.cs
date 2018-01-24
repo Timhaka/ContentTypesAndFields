@@ -229,7 +229,6 @@ namespace ContentTypesAndFields.CodeExamples
 
             ListItem item = files.ListItemAllFields;
             
-
             item["Title"] = "Tim";
             item["ContentTypeId"] = cVCT;
 
@@ -247,6 +246,44 @@ namespace ContentTypesAndFields.CodeExamples
 
 
 
+        }
+
+        public static void RenameTitleFieldonCV(ClientContext ctx)
+        {
+            string cVCT = "0x010100A959F697950047DF80D85119D99F8CA7";
+
+            
+
+            List list = ctx.Web.GetListByTitle("CVs");
+
+            ContentType ct = list.GetContentTypeByName("CV");
+            ctx.Load(ct.FieldLinks, flinks => flinks.Include(flink => flink.Name, flink => flink.DisplayName));
+            ctx.ExecuteQuery();
+
+            
+
+            foreach (var fl in ct.FieldLinks)
+            {
+                //ctx.Load(fl);
+                //ctx.ExecuteQuery();
+                Console.WriteLine(fl.Name);
+                Console.WriteLine(fl.DisplayName);
+                
+
+
+                if (fl.Name == "Title")
+                {
+                    fl.DisplayName = "CV Description";
+                    ct.Update(false);
+                    ctx.ExecuteQuery();
+                       
+                }
+
+
+            }
+
+            Console.ReadLine();
+            
         }
 
         public static byte[] ReadFully(System.IO.Stream input)
