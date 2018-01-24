@@ -143,6 +143,116 @@ namespace ContentTypesAndFields.CodeExamples
 
         }
 
+        public static void CreateCV(ClientContext ctx)
+        {
+
+            string cVCT = "0x010100A959F697950047DF80D85119D99F8CA7";
+
+            Web web = ctx.Site.RootWeb;
+
+            if (!web.ContentTypeExistsById(cVCT))
+            {
+                web.CreateContentType("CV", cVCT, "Davids ContentType");
+
+            }
+
+
+            string picFieldId = "{98A1C95C-AA0F-4D2C-92C8-5407594C440F}";
+
+            if (!web.FieldExistsById(new Guid(picFieldId)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.URL);
+                info.Id = picFieldId.ToGuid();
+                info.InternalName = "DAV_Pic";
+                info.DisplayName = "Picture";
+                info.Group = "Tims Columns";
+
+                FieldUrl picfield = web.CreateField<FieldUrl>(info);
+                picfield.DisplayFormat = UrlFieldFormatType.Image;
+                picfield.Update();
+                ctx.ExecuteQuery();
+
+            }
+
+            string userFieldId = "{B0C1EFC4-189E-4626-A1DC-1CCC4693C097}";
+
+            if (!web.FieldExistsById(new Guid(userFieldId)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.User);
+                info.Id = userFieldId.ToGuid();
+                info.InternalName = "DAV_User";
+                info.DisplayName = "User";
+                info.Group = "Tims Columns";
+                FieldUser userfield = web.CreateField<FieldUser>(info);
+                ctx.ExecuteQuery();
+
+            }
+
+            string activeFieldId = "{2CB24A28-3F5B-49AE-9F54-5FD8747DBF19}";
+
+            if (!web.FieldExistsById(new Guid(activeFieldId)))
+            {
+                FieldCreationInformation info = new FieldCreationInformation(FieldType.Boolean);
+                info.Id = activeFieldId.ToGuid();
+                info.InternalName = "DAV_Active";
+                info.DisplayName = "Active";
+                info.Group = "Tims Columns";
+                web.CreateField(info);
+
+            }
+
+
+            web.AddContentTypeToListById(cVCT, picFieldId);
+            web.AddContentTypeToListById(cVCT, userFieldId);
+            web.AddContentTypeToListById(cVCT, activeFieldId);
+
+
+            if (!web.ListExists("CVs"))
+            {
+                List list = web.CreateList(ListTemplateType.DocumentLibrary, "CVs", true, enableContentTypes: true);
+                list.AddContentTypeToListById(cVCT);
+            }
+
+            List CVList = web.GetListByTitle("CVs");
+
+            FileCreationInformation fileinfo = new FileCreationInformation();
+            System.IO.FileStream fileStream = System.IO.File.OpenRead(@"C:\Users\timha\Desktop\Sharepoint Developer\Office Developer 1");
+            fileinfo.Content = ReadFully(fileStream);
+            fileinfo.Url = "file1.txt";
+            Microsoft.SharePoint.Client.File files = CVList.RootFolder.Files.Add(fileinfo);
+            ctx.ExecuteQuery();
+
+            User user = web.EnsureUser("Tim@folkis2017.onmicrosoft.com");
+            ctx.Load(user);
+            ctx.ExecuteQuery();
+
+
+            ListItem item = files.ListItemAllFields;
+            
+
+            item["Title"] = "Tim";
+            item["ContentTypeId"] = cVCT;
+
+            FieldUrlValue picvalue = new FieldUrlValue();
+            picvalue.Description = "Tim";
+            picvalue.Url = "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb";
+            item["DAV_Pic"] = picvalue;
+
+            item["DAV_User"] = user.Id;
+            item["DAV_Active"] = true;
+    
+
+            item.Update();
+            ctx.ExecuteQuery();
+
+
+
+        }
+
+        public static void ReadFully(System.IO.FileStream file)
+        {
+
+        }
 
     }
 }

@@ -16,8 +16,8 @@ namespace ContentTypesAndFields
             {
 
                 // ContentTypeFun.MyFirstContentType(ctx);
-                ContentTypeAssignemnt.CreateBookCT(ctx);
-
+                //ContentTypeAssignemnt.CreateBookCT(ctx);
+                ContentTypeAssignemnt.CreateCV(ctx);
 
             }
 
