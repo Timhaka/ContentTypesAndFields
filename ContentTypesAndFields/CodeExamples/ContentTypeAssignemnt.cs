@@ -2,6 +2,7 @@
 using OfficeDevPnP.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -249,9 +250,19 @@ namespace ContentTypesAndFields.CodeExamples
 
         }
 
-        public static void ReadFully(System.IO.FileStream file)
+        public static byte[] ReadFully(System.IO.Stream input)
         {
-
+            byte[] buffer = new byte[input.Length];
+            //byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
 
     }
