@@ -1,4 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
 using OfficeDevPnP.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -112,7 +113,7 @@ namespace ContentTypesAndFields.CodeExamples
 
             rootWeb.CreateContentType("Books", booksID, "Tims Columns");
 
-
+            
 
             FieldCreationInformation bookType = new FieldCreationInformation(FieldType.Choice);
             bookType.DisplayName = "Book Type";
@@ -161,6 +162,8 @@ namespace ContentTypesAndFields.CodeExamples
             list.AddContentTypeToListById(booksID, true);
 
 
+
+           
 
         }
     }
