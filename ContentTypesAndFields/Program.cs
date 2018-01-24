@@ -18,7 +18,8 @@ namespace ContentTypesAndFields
                 //ContentTypeFun.MyFirstContentType(ctx);
                 //ContentTypeAssignemnt.CreateBookCT(ctx);
                 //ContentTypeAssignemnt.CreateCV(ctx);
-                ContentTypeAssignemnt.RenameTitleFieldonCV(ctx);
+                //ContentTypeAssignemnt.RenameTitleFieldonCV(ctx);
+                ContentTypeAssignemnt.TurnOnMayorAndMinorVersion(ctx);
             }
 
             Console.WriteLine("Enter to Continue");

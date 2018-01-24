@@ -250,17 +250,12 @@ namespace ContentTypesAndFields.CodeExamples
 
         public static void RenameTitleFieldonCV(ClientContext ctx)
         {
-            string cVCT = "0x010100A959F697950047DF80D85119D99F8CA7";
-
-            
-
+   
             List list = ctx.Web.GetListByTitle("CVs");
 
             ContentType ct = list.GetContentTypeByName("CV");
             ctx.Load(ct.FieldLinks, flinks => flinks.Include(flink => flink.Name, flink => flink.DisplayName));
             ctx.ExecuteQuery();
-
-            
 
             foreach (var fl in ct.FieldLinks)
             {
@@ -299,6 +294,18 @@ namespace ContentTypesAndFields.CodeExamples
                 }
                 return ms.ToArray();
             }
+        }
+
+        public static void TurnOnMayorAndMinorVersion(ClientContext ctx)
+        {
+
+            List list = ctx.Web.GetListByTitle("CVs");
+            list.EnableVersioning = true;
+            list.EnableMinorVersions = true;
+            list.ForceCheckout = true;
+            list.Update();
+            ctx.ExecuteQuery();
+            
         }
 
     }
