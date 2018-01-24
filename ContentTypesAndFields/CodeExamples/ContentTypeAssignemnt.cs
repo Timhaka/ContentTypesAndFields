@@ -308,5 +308,20 @@ namespace ContentTypesAndFields.CodeExamples
             
         }
 
+        public static void CreateView(ClientContext ctx)
+        {
+
+            List list = ctx.Web.GetListByTitle("CVs");
+
+            ViewCreationInformation info = new ViewCreationInformation();
+
+            info.ViewFields = new string[] { "title", "DAV_User", "DAV_Pic", "DAV_Active" };
+            info.Title = "Active CVs";
+            //Have to look on camlQuery more.
+            info.Query = @"<Where><Eq><FieldRef Name='DAV_IsActive' /><Value Type='Integer'>1</Value></Eq></Where>";
+            list.Views.Add(info);
+
+        }
+
     }
 }
