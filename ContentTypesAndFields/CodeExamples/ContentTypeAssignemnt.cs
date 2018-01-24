@@ -202,10 +202,9 @@ namespace ContentTypesAndFields.CodeExamples
 
             }
 
-
-            web.AddContentTypeToListById(cVCT, picFieldId);
-            web.AddContentTypeToListById(cVCT, userFieldId);
-            web.AddContentTypeToListById(cVCT, activeFieldId);
+            web.AddFieldToContentTypeById(cVCT, picFieldId);
+            web.AddFieldToContentTypeById(cVCT, userFieldId);
+            web.AddFieldToContentTypeById(cVCT, activeFieldId);
 
 
             if (!web.ListExists("CVs"))
@@ -217,7 +216,7 @@ namespace ContentTypesAndFields.CodeExamples
             List CVList = web.GetListByTitle("CVs");
 
             FileCreationInformation fileinfo = new FileCreationInformation();
-            System.IO.FileStream fileStream = System.IO.File.OpenRead(@"C:\Users\timha\Desktop\Sharepoint Developer\Office Developer 1");
+            System.IO.FileStream fileStream = System.IO.File.OpenRead(@"C:\Users\timha\source\repos\Officedeveloper1\ContentTypesAndFields\ContentTypesAndFields\TextFile1.txt");
             fileinfo.Content = ReadFully(fileStream);
             fileinfo.Url = "file1.txt";
             Microsoft.SharePoint.Client.File files = CVList.RootFolder.Files.Add(fileinfo);
