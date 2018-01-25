@@ -2,12 +2,12 @@
 <pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
   <pnp:SiteFields>
     <Field ID="{4A1E9426-B7FA-4305-9548-8D7B23BC1C6B}" Type="Choice" Name="TIM_Position" DisplayName="Position" Group="Tims Coloums" Format="RadioButtons" FillInChoice="FALSE">
-    <Default></Default>
-    <CHOICES>
-      <CHOICE>Goal</CHOICE>
-      <CHOICE>Defence</CHOICE>
-      <CHOICE>Forward</CHOICE>
-    </CHOICES>
+      <Default></Default>
+      <CHOICES>
+        <CHOICE>Goal</CHOICE>
+        <CHOICE>Defence</CHOICE>
+        <CHOICE>Forward</CHOICE>
+      </CHOICES>
     </Field>
     <Field ID="{8044810E-EFB9-4C22-874A-D5F22E4F5329}" Type="Number" Name="TIM_ShirtNumber" DisplayName="Shirt Number" Min="0" Max="100" Group="Tims Coloums" />
     <Field ID="{A0C00C03-26BC-4430-A364-88FFACDD5BA2}" Type="Text" Name="TIM_TeamName" DisplayName="Team" Group="Tims Coloums"/>
@@ -45,9 +45,9 @@
       </pnp:ContentTypeBindings>
     </pnp:ListInstance>
   </pnp:Lists>
-  
-  
-  
 
-  
+
+
+
+
 </pnp:ProvisioningTemplate>

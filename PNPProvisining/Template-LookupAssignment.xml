@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" Version="1.0"
+      xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <!--Create an employee database where people can store employee data.
+
+  It will consist of the following lists
+
+  EmployeeType - custom list: it will contain a list of employee types (Contractor, Hourly, Permanent, project ect). Pre populate these values
+
+  Employee list : actuall employees
+  Title - exists already in the item content type
+  Employee - User Field
+  Picture  - Picture field
+  Linkedin Profile - Url Field
+  Age - number field
+  Education : choice field (Basic, Highschool, University etc)
+  Employee Type - Lookup field. Should be pointing to the Employee type list.
+  Manager : lookup field - Should lookup to the employee list
+
+  Things to fix
+  Create a content type for the employee list
+  Add at least 3 items programatically using c#
+  Loop through all items and display them in the console. -->
+  
+  <pnp:SiteFields>
+    <Field ID="{533553BB-978B-4D78-8854-3EA95922CBF7}" Group="Tims columns" Required="FALSE"  StaticName="TIM_EmployeeType"  Type="Lookup" Name="TIM_EmployeeType" DisplayName="Employee Types" List="Lists/EmployeeTypes" ShowField="Title" />
+    <Field ID="{55A4F259-D80E-415A-9122-CBD9F66AE146}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Manager"  Type="Lookup" Name="TIM_Manager" DisplayName="Manager" List="Lists/Employee" ShowField="Title" />
+
+    <!-- Content type fields -->
+    <Field ID="{F0A873EB-F343-4184-B9F0-43C94191CB22}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Employee"  Type="User" Name="TIM_Employee" DisplayName="Employee" />
+    <Field ID="{8DFC9938-D6D6-4C99-A75A-972E9265EFBD}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Picture"  Type="URL" Format="Image" Name="TIM_Picture" DisplayName="Picture" />
+    <Field ID="{78CA1900-2FDA-4648-88ED-58D073F33F55}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Linkedin"  Type="URL" Format="Hyperlink" Name="TIM_Linkedin" DisplayName="Linkedin" />
+    <Field ID="{20244EAF-5FED-4602-8DEB-C0E90B08265F}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Age"  Type="Number" Name="TIM_Age" DisplayName="Age" Min="15" Max="100" />
+    <Field ID="{E09A924E-7152-4784-90AD-A6978C83A373}" Group="Tims columns" Required="FALSE"  StaticName="TIM_Education"  Type="Choice" Name="TIM_Education" DisplayName="Education" Format="RadioButtons" FillInChoice="FALSE">
+      <Default></Default>
+      <CHOICES>
+        <CHOICE>Basic</CHOICE>
+        <CHOICE>Highschool</CHOICE>
+        <CHOICE>University</CHOICE>
+      </CHOICES>
+    </Field>
+
+
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x0100986152690BA14341A84282221162986B"
+                     Name="EmployeeCT"
+                      Group="Tims Coloums"
+                      Description="Content Type for Employee">
+      <pnp:FieldRefs>
+        <!-- TIM_Employee -->
+        <pnp:FieldRef ID="{F0A873EB-F343-4184-B9F0-43C94191CB22}" />
+        <!-- TIM_Picture -->
+        <pnp:FieldRef ID="{8DFC9938-D6D6-4C99-A75A-972E9265EFBD}"  />
+        <!-- TIM_Linkedin -->
+        <pnp:FieldRef ID="{78CA1900-2FDA-4648-88ED-58D073F33F55}"  />
+        <!-- TIM_Age -->
+        <pnp:FieldRef ID="{20244EAF-5FED-4602-8DEB-C0E90B08265F}"  />
+        <!-- TIM_Education -->
+        <pnp:FieldRef ID="{E09A924E-7152-4784-90AD-A6978C83A373}"  />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+  
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Employee Types"
+                Description="Types of Employee"
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/EmployeeTypes"
+                EnableVersioning="false">
+      <pnp:DataRows>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Contractor</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Hourly</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">Permanent</pnp:DataValue>
+        </pnp:DataRow>
+        <pnp:DataRow>
+          <pnp:DataValue FieldName="Title">project</pnp:DataValue>
+        </pnp:DataRow>
+      </pnp:DataRows>
+    </pnp:ListInstance>
+
+    <pnp:ListInstance Title="Employee"
+            Description="Employee"
+            OnQuickLaunch="true"
+            TemplateType="100"
+            Url="Lists/Employee"
+            EnableVersioning="false">
+      <pnp:FieldRefs>
+        <!-- DAV_Position -->
+        <pnp:FieldRef ID="{533553BB-978B-4D78-8854-3EA95922CBF7}" />
+        <pnp:FieldRef ID="{55A4F259-D80E-415A-9122-CBD9F66AE146}" />
+      </pnp:FieldRefs>
+      
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x0100986152690BA14341A84282221162986B" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+</pnp:ProvisioningTemplate>
