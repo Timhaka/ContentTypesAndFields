@@ -44,43 +44,43 @@ namespace PNPProvisining
                 //ProvisioningTemplate template2 = prov2.GetTemplate(name2);
                 //ctx.Web.ApplyProvisioningTemplate(template2);
 
-                List list = ctx.Web.GetListByTitle("Employee");
-                ctx.Load(list);
+                //List list = ctx.Web.GetListByTitle("Employee");
+                //ctx.Load(list);
 
-                Microsoft.SharePoint.Client.User users = ctx.Site.RootWeb.EnsureUser("tim@folkis2017.onmicrosoft.com");
-                ctx.Load(users);
-                ctx.ExecuteQuery();
+                //Microsoft.SharePoint.Client.User users = ctx.Site.RootWeb.EnsureUser("tim@folkis2017.onmicrosoft.com");
+                //ctx.Load(users);
+                //ctx.ExecuteQuery();
 
 
-                ListItem item1 = list.AddItem(new ListItemCreationInformation());
-                item1["Title"] = "Manager";
-                item1["TIM_Employee"] = users;
-                item1["TIM_Picture"] = "http://www.catster.com/wp-content/uploads/2017/06/small-kitten-meowing.jpg";
-                item1["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
-                item1["TIM_Age"] = 30;
-                item1["TIM_Education"] = "Basic";
-                item1.Update();
+                //ListItem item1 = list.AddItem(new ListItemCreationInformation());
+                //item1["Title"] = "Manager";
+                //item1["TIM_Employee"] = users;
+                //item1["TIM_Picture"] = "http://www.catster.com/wp-content/uploads/2017/06/small-kitten-meowing.jpg";
+                //item1["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
+                //item1["TIM_Age"] = 30;
+                //item1["TIM_Education"] = "Basic";
+                //item1.Update();
                 
 
-                ListItem item2 = list.AddItem(new ListItemCreationInformation());
-                item2["Title"] = "Staff";
-                item2["TIM_Employee"] = users;
-                item2["TIM_Picture"] = "https://d2btg9txypwkc4.cloudfront.net/media/catalog/category/Kampanjer.jpg";
-                item2["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
-                item2["TIM_Age"] = 20;
-                item2["TIM_Education"] = "Highschool";
-                item2.Update();
+                //ListItem item2 = list.AddItem(new ListItemCreationInformation());
+                //item2["Title"] = "Staff";
+                //item2["TIM_Employee"] = users;
+                //item2["TIM_Picture"] = "https://d2btg9txypwkc4.cloudfront.net/media/catalog/category/Kampanjer.jpg";
+                //item2["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
+                //item2["TIM_Age"] = 20;
+                //item2["TIM_Education"] = "Highschool";
+                //item2.Update();
                
 
-                ListItem item3 = list.AddItem(new ListItemCreationInformation());
-                item3["Title"] = "Staff";
-                item3["TIM_Employee"] = users;
-                item3["TIM_Picture"] = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Tim_Studio2104.jpg/1200px-Tim_Studio2104.jpg";
-                item3["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
-                item3["TIM_Age"] = 55;
-                item3["TIM_Education"] = "University";
-                item3.Update();
-                ctx.ExecuteQuery();
+                //ListItem item3 = list.AddItem(new ListItemCreationInformation());
+                //item3["Title"] = "Staff";
+                //item3["TIM_Employee"] = users;
+                //item3["TIM_Picture"] = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Tim_Studio2104.jpg/1200px-Tim_Studio2104.jpg";
+                //item3["TIM_Linkedin"] = "https://www.linkedin.com/feed/";
+                //item3["TIM_Age"] = 55;
+                //item3["TIM_Education"] = "University";
+                //item3.Update();
+                //ctx.ExecuteQuery();
 
 
 
@@ -91,14 +91,29 @@ namespace PNPProvisining
                 //ctx.Web.ApplyProvisioningTemplate(template3);
 
 
-                //ListItemCollection list = ctx.Web.Lists.GetByTitle("Employee").GetItems(CamlQuery.CreateAllItemsQuery());
-                //ctx.Load(list);
-                //ctx.ExecuteQuery();
+                ListItemCollection list = ctx.Web.Lists.GetByTitle("Employee").GetItems(CamlQuery.CreateAllItemsQuery());
+                ctx.Load(list);
+                ctx.ExecuteQuery();
+                int i = 1;
+                foreach (var item in list)
+                {
+                    FieldUserValue Username = item["TIM_Employee"] as FieldUserValue;
+                    FieldUrlValue picUrl = item["TIM_Picture"] as FieldUrlValue;
+                    FieldUrlValue LinkinUrl = item["TIM_Linkedin"] as FieldUrlValue;
 
-                //foreach (var item in list)
-                //{
-                //    Console.WriteLine();
-                //}
+
+                    Console.WriteLine("Person "+ i++);
+                    Console.WriteLine();
+                    Console.WriteLine(item["Title"]);
+                    Console.WriteLine(Username.Email);
+                    Console.WriteLine(picUrl.Url);
+                    Console.WriteLine("descrip " + picUrl.Description);
+                    Console.WriteLine(LinkinUrl.Url);
+                    Console.WriteLine("descrip " + LinkinUrl.Description);
+                    Console.WriteLine(item["TIM_Age"]);
+                    Console.WriteLine(item["TIM_Education"]);
+
+                }
 
 
             }
