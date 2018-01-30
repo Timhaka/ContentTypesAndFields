@@ -29,7 +29,7 @@ namespace CamlFun
                 //write a query using the help of query designer to show all items that are not 
                 //expired and have a date greater then Year created.
 
-                ShowAllItemsThatAreNotExpired(ctx);
+                //ShowAllItemsThatAreNotExpired(ctx);
 
                 //Write another query where product type = "your choice" 
                 //and the number in stock > 10(or your choice)
@@ -43,7 +43,7 @@ namespace CamlFun
 
 
             }
-
+            Console.WriteLine("-----------------------------");
             Console.WriteLine("Enter to Continue");
             Console.ReadKey();
 
@@ -75,9 +75,11 @@ namespace CamlFun
 
                 foreach (var item in listItems)
                 {
+                    Console.WriteLine("-----------------------------");
                     Console.WriteLine(item["Title"].ToString());
                     //Console.WriteLine(item["PROD_Type"].ToString());
                     //Console.WriteLine(item["PROD_InStock"].ToString());
+                   
                 }
             }
         }
@@ -106,9 +108,11 @@ namespace CamlFun
 
                 foreach (var item in listItems)
                 {
+                    Console.WriteLine("-----------------------------");
                     Console.WriteLine(item["Title"].ToString());
                     Console.WriteLine(item["PROD_Type"].ToString());
                     Console.WriteLine(item["PROD_InStock"].ToString());
+                  
                 }
             }
         }
@@ -137,9 +141,11 @@ namespace CamlFun
 
                 foreach (var item in listItems)
                 {
+                    Console.WriteLine("-----------------------------");
                     Console.WriteLine(item["Title"].ToString());
                     Console.WriteLine(item["PROD_Expiry"].ToString());
                     Console.WriteLine(item["PROD_Year"].ToString());
+                   
                 }
             }
         }
@@ -170,9 +176,11 @@ namespace CamlFun
 
                 foreach (var item in listItems)
                 {
+                    Console.WriteLine("-----------------------------");
                     Console.WriteLine(item["Title"].ToString());
                     Console.WriteLine(item["PROD_Type"].ToString());
                     Console.WriteLine(item["PROD_Price"].ToString());
+                    
                 }
             }
 
