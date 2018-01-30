@@ -48,7 +48,7 @@ namespace PNPProvisining
                 //string name3 = "template-lookupassignment.xml";
                 //ProvisioningTemplate template3 = prov3.GetTemplate(name3);
                 //ctx.Web.ApplyProvisioningTemplate(template3);
-
+               
 
 
             }
@@ -58,6 +58,8 @@ namespace PNPProvisining
         
 
         }
+
+  
 
         public static void AddItemsToEmployeelist(ClientContext ctx)
         {
@@ -115,7 +117,8 @@ namespace PNPProvisining
                 FieldUserValue Username = item["TIM_Employee"] as FieldUserValue;
                 FieldUrlValue picUrl = item["TIM_Picture"] as FieldUrlValue;
                 FieldUrlValue LinkinUrl = item["TIM_Linkedin"] as FieldUrlValue;
-
+                //FieldLookupValue empType = item[] as FieldLookupValue;
+                //FieldLookupValue managerType = item[] as FieldLookupValue;
 
                 Console.WriteLine("Person " + i++);
                 Console.WriteLine();

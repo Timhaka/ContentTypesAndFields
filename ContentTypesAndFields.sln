@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNPProvisining", "PNPProvis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookupsandtaxanomyFields", "..\LookupsandtaxanomyFields\LookupsandtaxanomyFields\LookupsandtaxanomyFields.csproj", "{3268EF65-4D34-451C-AF6D-522A6CEE7F13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamlFun", "CamlFun\CamlFun.csproj", "{6404B116-8DE5-4959-86CC-5C37812EB571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3268EF65-4D34-451C-AF6D-522A6CEE7F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3268EF65-4D34-451C-AF6D-522A6CEE7F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3268EF65-4D34-451C-AF6D-522A6CEE7F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6404B116-8DE5-4959-86CC-5C37812EB571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6404B116-8DE5-4959-86CC-5C37812EB571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6404B116-8DE5-4959-86CC-5C37812EB571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6404B116-8DE5-4959-86CC-5C37812EB571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

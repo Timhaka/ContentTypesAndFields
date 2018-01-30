@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+  
+  <pnp:SiteFields>
+    <Field ID="{1C24666E-A358-4C0E-B0D5-733FA9447F70}"
+           Type="Number"
+           Name="PROD_Price" DisplayName="Price"
+           Group="Product Coloums" />
+    
+    <Field ID="{39765325-022C-4507-AB92-C69F7602065A}"
+           Type="Choice"
+           Name="PROD_Type"
+           DisplayName="Product Type"
+           Group="Product Coloums"
+           Format="RadioButtons"
+           FillInChoice="FALSE">
+      <Default></Default>
+      <CHOICES>
+        <CHOICE>Dairy</CHOICE>
+        <CHOICE>Meet</CHOICE>
+        <CHOICE>Bread</CHOICE>
+        <CHOICE>Vegies</CHOICE>
+        <CHOICE>Other</CHOICE>
+      </CHOICES>
+    </Field>
+    
+    <Field ID="{91BF50D9-9045-4CE9-91BE-EBF4AE7DB0DC}"
+           Type="DateTime"
+           Name="PROD_Expiry"
+           DisplayName="Expiry Date"
+           Group="Product Coloums"
+           Format="DateOnly"
+           Description="Expiry date"/>
+    
+    <Field ID="{F84FCD0C-B572-48BC-80F8-E593D5C49735}"
+             Type="Number"
+             Name="PROD_InStock"
+             DisplayName="Number in stock"
+            Group="Product Columns"  />
+    
+    <Field ID="{F96857CD-9BA5-4C0F-8ABA-6829945989F7}"
+        Type="Number"
+        Name="PROD_Year"
+        DisplayName="Year Created"
+       Group="Product Columns"  />
+    
+  </pnp:SiteFields>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Products"
+            Description="List of Products"
+            OnQuickLaunch="true"
+            TemplateType="100"
+            Url="Lists/Products"
+            EnableVersioning="false">
+      <pnp:FieldRefs>
+        <!-- DAV_Position -->
+        <pnp:FieldRef ID="{1C24666E-A358-4C0E-B0D5-733FA9447F70}" />
+        <pnp:FieldRef ID="{39765325-022C-4507-AB92-C69F7602065A}" />
+        <pnp:FieldRef ID="{91BF50D9-9045-4CE9-91BE-EBF4AE7DB0DC}" />
+        <pnp:FieldRef ID="{F96857CD-9BA5-4C0F-8ABA-6829945989F7}" />
+        <pnp:FieldRef ID="{F84FCD0C-B572-48BC-80F8-E593D5C49735}" />
+      </pnp:FieldRefs>
+
+
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+</pnp:ProvisioningTemplate>
