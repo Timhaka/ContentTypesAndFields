@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="Tim Hero" ID="{D1842AF5-50C5-48A0-8B8A-2022A2A08EB4}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="Super Powers" ID="{87772A8F-F3BC-4529-A7A2-D7864A26DF52}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Flying" ID="{02E7CA25-9F24-4C8B-98B9-141B4DB0E3A3}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Super Strenght" ID="{54D8E553-18EA-4B43-91BF-96DCC4C7F719}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Super Speed" ID="{72469CAF-FC43-464B-82C7-F53F9A50D0CE}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Shoot Fire" ID="{D9ADB02D-CEE3-40DE-A247-18A8D3DDD285}" IsAvailableForTagging="true"/>
+          </pnp:Terms>
+        </pnp:TermSet>
+        <pnp:TermSet Name="Weapons" >
+          <pnp:Terms>
+            <pnp:Term Name="Sword" CustomSortOrder="1" ID="{EB750836-C192-4530-B441-38CFAAC40681}" >
+              <pnp:CustomProperties>
+                <pnp:Property Key="TestProperty" Value="TestProperty"/>
+              </pnp:CustomProperties>
+              <pnp:Terms>
+                <pnp:Term Name="Bastard Sword" CustomSortOrder="1" ID="{6B00F486-DD26-49FC-9BB2-410841329652}" />
+                <pnp:Term Name="Katana" CustomSortOrder="2" ID="{21513E5B-77CD-4369-881F-FEA870CCA164}"/>
+              </pnp:Terms>
+            </pnp:Term>
+            <pnp:Term Name="Axe" CustomSortOrder="2" ID="{DE67F93E-895E-47FC-A1D8-21B6563926EC}" />
+            <pnp:Terms>
+              <pnp:Term Name="Great Axe" CustomSortOrder="1" ID="{7A640B1A-56D5-4560-9F40-5053DFE54C89}" />
+              <pnp:Term Name="Battle Axe" CustomSortOrder="2" ID="{857B1E05-FBE2-4EA8-BC4C-6CDA47DD5E23}"/>
+            </pnp:Terms>
+            <pnp:Term Name="Bow" CustomSortOrder="3" ID="{EC67DB8A-023E-4995-A951-59CB71309FEC}" />
+            <pnp:Terms>
+              <pnp:Term Name="Great Bow" CustomSortOrder="1" ID="{198BAAE4-9460-4AE1-9670-88F4B0536D14}" />
+              <pnp:Term Name="Long Bow" CustomSortOrder="2" ID="{8887F3D8-ED50-4705-BC08-4956D44CBEF0}"/>
+            </pnp:Terms>
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+
+  <!--Hidden note field must be connected to the textField-->
+  <pnp:SiteFields>
+    <Field ID="{8C6CCEA4-3B05-4A85-968E-3B305822C158}" Type="Note" DisplayName="DocumentType_0" StaticName="TIM_DocTypeHidden" Name="TIM_DocTypeHidden"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID ="{5A6B931A-B085-402F-AD7C-AA9638F33CCF}"
+           Type="TaxonomyFieldType"
+           DisplayName="Document Type"
+           Name="TIM_DocType"
+           StaticName="TIM_DocType"
+           ShowField="Term1033"
+           Required="FALSE"
+           EnforceUniqueValues="FALSE"
+           Group="Tims Fields">
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:Tim2:DocumentType}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">8C6CCEA4-3B05-4A85-968E-3B305822C158</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x010100A70D8E1903F643878F729737975224E1" Name="Important Document" Description="Project's Document" Group="Tims Content Types">
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="{5A6B931A-B085-402F-AD7C-AA9638F33CCF}" Required="true" />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Important Document"
+                Description="List of docs "
+                OnQuickLaunch="true"
+                TemplateType="101"
+                Url="Lists/Importantdocs"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x010100A70D8E1903F643878F729737975224E1" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+</pnp:ProvisioningTemplate>

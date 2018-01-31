@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="Tim Hero" ID="{D1842AF5-50C5-48A0-8B8A-2022A2A08EB4}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="Super Powers" ID="{87772A8F-F3BC-4529-A7A2-D7864A26DF52}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Flying" ID="{02E7CA25-9F24-4C8B-98B9-141B4DB0E3A3}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Super Strenght" ID="{54D8E553-18EA-4B43-91BF-96DCC4C7F719}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Super Speed" ID="{72469CAF-FC43-464B-82C7-F53F9A50D0CE}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Shoot Fire" ID="{D9ADB02D-CEE3-40DE-A247-18A8D3DDD285}" IsAvailableForTagging="true"/>
+          </pnp:Terms>
+        </pnp:TermSet>
+        <pnp:TermSet Name="Weapons" ID="{B8B5D816-FD5F-4D17-8FC9-8BD542655805}" Language="1033">
+          <pnp:Terms>
+          <pnp:Term Name="Sword" ID="{C41A3416-ABA2-42AD-ADCB-AB530C37D7C2}" IsAvailableForTagging="true"/>
+          <pnp:Term Name="Axe" ID="{BA2D292B-ECDA-49C4-8B56-73ECE9360532}" IsAvailableForTagging="true"/>
+          <pnp:Term Name="Bow" ID="{942A83E8-1042-4678-AB60-8D7C6DCF3475}" IsAvailableForTagging="true"/>
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+
+
+  <!--Hidden note field must be connected to the textField-->
+  <pnp:SiteFields>
+    <!--Taxanomy single-->
+    <Field ID="{73F00D41-B1F8-48CC-B957-CFA6BF037A59}" Type="Note" DisplayName="SuperPower_0" StaticName="TIM_SuperPowerHidden" Name="TIM_SuperPowerHidden"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID ="{065C4CAF-735C-4D79-B74B-438DB120E60E}"
+           Type="TaxonomyFieldType"
+           DisplayName="Document Type"
+           Name="TIM_SuperPower"
+           StaticName="TIM_SuperPower"
+           ShowField="Term1033"
+           Required="FALSE"
+           EnforceUniqueValues="FALSE"
+           Group="Tims hero Fields">
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:Tim Hero:Super Powers}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">73F00D41-B1F8-48CC-B957-CFA6BF037A59</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+    
+    <!-- Multi value taxonomy field with default values set, note that this implies that one provisions the terms with a known ID. This field also contains all
+         possible customization properties -->
+
+    <Field ID="{E435C9CA-58E3-40D3-8F82-76542B69132C}" Type="Note" Name="TIM_WeaponHidden" StaticName="TIM_WeaponHidden" DisplayName="Weapon Hidden" ShowInViewForms="FALSE"  Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID="{EB647A31-61EF-4751-ABE1-526E523AF002}" 
+           Type="TaxonomyFieldTypeMulti" 
+           Name="TIM_Weapon" 
+           StaticName="TIM_Weapon" 
+           DisplayName="Weapons" 
+           Group="Tims hero Fields" 
+           ShowField="Term1033" 
+           Required="FALSE" 
+           EnforceUniqueValues="FALSE" 
+           Mult="TRUE">
+      <Default></Default>
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:Tim Hero:Weapons}</Value>
+          </Property>
+          <Property>
+            <Name>AnchorId</Name>
+            <Value xmlns:q3="http://www.w3.org/2001/XMLSchema" p4:type="q3:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">00000000-0000-0000-0000-000000000000</Value>
+          </Property>
+          <Property>
+            <Name>UserCreated</Name>
+            <Value xmlns:q4="http://www.w3.org/2001/XMLSchema" p4:type="q4:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>Open</Name>
+            <Value xmlns:q5="http://www.w3.org/2001/XMLSchema" p4:type="q5:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{E435C9CA-58E3-40D3-8F82-76542B69132C}</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>TargetTemplate</Name>
+          </Property>
+          <Property>
+            <Name>CreateValuesInEditForm</Name>
+            <Value xmlns:q9="http://www.w3.org/2001/XMLSchema" p4:type="q9:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>FilterClassName</Name>
+            <Value xmlns:q11="http://www.w3.org/2001/XMLSchema" p4:type="q11:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">Microsoft.SharePoint.Taxonomy.TaxonomyField</Value>
+          </Property>
+          <Property>
+            <Name>FilterMethodName</Name>
+            <Value xmlns:q12="http://www.w3.org/2001/XMLSchema" p4:type="q12:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">GetFilteringHtml</Value>
+          </Property>
+          <Property>
+            <Name>FilterJavascriptProperty</Name>
+            <Value xmlns:q13="http://www.w3.org/2001/XMLSchema" p4:type="q13:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">FilteringJavascript</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+    
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x010084E759E8F193403A9F54C0A022B8537B" Name="Super Heroes" Description="Heroes" Group="Tims Hero Content Types">
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="{065C4CAF-735C-4D79-B74B-438DB120E60E}" Required="true" />
+        <pnp:FieldRef ID="{EB647A31-61EF-4751-ABE1-526E523AF002}" Required="true" />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+
+  <pnp:Lists>
+    <pnp:ListInstance Title="Super Heroes"
+                Description="List of Heroes "
+                OnQuickLaunch="true"
+                TemplateType="100"
+                Url="Lists/SuperHeroes"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x010084E759E8F193403A9F54C0A022B8537B" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+</pnp:ProvisioningTemplate>

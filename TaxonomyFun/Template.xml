@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pnp:ProvisioningTemplate ID="CountryStuff" xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+
+  <pnp:TermGroups>
+    <pnp:TermGroup Name="Tim2" ID="{51ACB897-9C69-4B17-83F7-F7CE5D5EEF7C}">
+      <pnp:TermSets>
+        <pnp:TermSet Name="DocumentType" ID="{FD94C587-2373-4B55-82F8-8519170715F2}" Language="1033">
+          <pnp:Terms>
+            <pnp:Term Name="Policy" ID="{690F98FD-5C42-40AB-887A-98D4F8B81B70}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Checklist" ID="{27828810-4169-400B-8B05-8BB541626AEF}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Project" ID="{52D873EE-6352-4CDB-BCF8-EDEA48D94CBC}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Template" ID="{817318CC-FBBC-4B0D-B4D8-2B1830984E66}" IsAvailableForTagging="true"/>
+          </pnp:Terms>
+        </pnp:TermSet>
+      </pnp:TermSets>
+    </pnp:TermGroup>
+  </pnp:TermGroups>
+  
+  <!--Hidden note field must be connected to the textField-->
+  <pnp:SiteFields>
+    <Field ID="{8C6CCEA4-3B05-4A85-968E-3B305822C158}" Type="Note" DisplayName="DocumentType_0" StaticName="TIM_DocTypeHidden" Name="TIM_DocTypeHidden"  ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" />
+    <Field ID ="{5A6B931A-B085-402F-AD7C-AA9638F33CCF}" 
+           Type="TaxonomyFieldType" 
+           DisplayName="Document Type" 
+           Name="TIM_DocType" 
+           StaticName="TIM_DocType" 
+           ShowField="Term1033" 
+           Required="FALSE" 
+           EnforceUniqueValues="FALSE" 
+           Group="Tims Fields">
+      <Customization>
+        <ArrayOfProperty>
+          <Property>
+            <Name>SspId</Name>
+            <Value xmlns:q1="http://www.w3.org/2001/XMLSchema" p4:type="q1:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{sitecollectiontermstoreid}</Value>
+          </Property>
+          <Property>
+            <Name>TermSetId</Name>
+            <Value xmlns:q2="http://www.w3.org/2001/XMLSchema" p4:type="q2:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">{termsetid:Tim2:DocumentType}</Value>
+          </Property>
+          <Property>
+            <Name>TextField</Name>
+            <Value xmlns:q6="http://www.w3.org/2001/XMLSchema" p4:type="q6:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">8C6CCEA4-3B05-4A85-968E-3B305822C158</Value>
+          </Property>
+          <Property>
+            <Name>IsPathRendered</Name>
+            <Value xmlns:q7="http://www.w3.org/2001/XMLSchema" p4:type="q7:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+          <Property>
+            <Name>IsKeyword</Name>
+            <Value xmlns:q8="http://www.w3.org/2001/XMLSchema" p4:type="q8:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+          </Property>
+        </ArrayOfProperty>
+      </Customization>
+    </Field>
+
+  </pnp:SiteFields>
+
+  <pnp:ContentTypes>
+    <pnp:ContentType ID="0x010100A70D8E1903F643878F729737975224E1" Name="Important Document" Description="Project's Document" Group="Tims Content Types">
+      <pnp:FieldRefs>
+        <pnp:FieldRef ID="{5A6B931A-B085-402F-AD7C-AA9638F33CCF}" Required="true" />
+      </pnp:FieldRefs>
+    </pnp:ContentType>
+  </pnp:ContentTypes>
+  
+  <pnp:Lists>
+    <pnp:ListInstance Title="Important Document"
+                Description="List of docs "
+                OnQuickLaunch="true"
+                TemplateType="101"
+                Url="Lists/Importantdocs"
+                EnableVersioning="false"
+                RemoveExistingContentTypes="true">
+      <pnp:ContentTypeBindings>
+        <pnp:ContentTypeBinding ContentTypeID="0x010100A70D8E1903F643878F729737975224E1" Default="true"/>
+      </pnp:ContentTypeBindings>
+    </pnp:ListInstance>
+  </pnp:Lists>
+
+</pnp:ProvisioningTemplate>
