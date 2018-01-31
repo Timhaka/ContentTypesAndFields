@@ -9,7 +9,7 @@
             <pnp:Term Name="Flying" ID="{02E7CA25-9F24-4C8B-98B9-141B4DB0E3A3}" IsAvailableForTagging="true"/>
             <pnp:Term Name="Super Strenght" ID="{54D8E553-18EA-4B43-91BF-96DCC4C7F719}" IsAvailableForTagging="true"/>
             <pnp:Term Name="Super Speed" ID="{72469CAF-FC43-464B-82C7-F53F9A50D0CE}" IsAvailableForTagging="true"/>
-            <pnp:Term Name="Shoot Fire" ID="{D9ADB02D-CEE3-40DE-A247-18A8D3DDD285}" IsAvailableForTagging="true"/>
+            <pnp:Term Name="Shoot Fire" ID="{300232E0-3027-4A1D-89AC-2BEEC9496A65}" IsAvailableForTagging="true"/>
           </pnp:Terms>
         </pnp:TermSet>
         <pnp:TermSet Name="Weapons" >

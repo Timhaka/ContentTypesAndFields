@@ -24,10 +24,10 @@ namespace TaxonomyFun
                 //CreateTaxonomyField(ctx);
 
                 //////Testing The first Template,
-                //XMLFileSystemTemplateProvider prov = new XMLFileSystemTemplateProvider(@"C:\Users\timha\source\repos\Officedeveloper1\ContentTypesAndFields\TaxonomyFun\", "");
-                //string name = "Template2.xml";
-                //ProvisioningTemplate template = prov.GetTemplate(name);
-                //ctx.Web.ApplyProvisioningTemplate(template);
+                //xmlfilesystemtemplateprovider prov = new xmlfilesystemtemplateprovider(@"c:\users\timha\source\repos\officedeveloper1\contenttypesandfields\taxonomyfun\", "");
+                //string name = "template2.xml";
+                //provisioningtemplate template = prov.gettemplate(name);
+                //ctx.web.applyprovisioningtemplate(template);
 
 
                 //ReadingFromTaxonomyField(ctx);
@@ -40,8 +40,8 @@ namespace TaxonomyFun
                 //ctx.Web.ApplyProvisioningTemplate(template);
 
 
-                DisplayListAndTaxanomyRead(ctx);
-
+                //DisplayListAndTaxanomyRead(ctx);
+               // AddToSuperHeroList(ctx);
 
 
             }
@@ -75,6 +75,37 @@ namespace TaxonomyFun
                     Console.WriteLine("  " + item.Label);
                 }
             }
+
+
+
+        }
+
+        static void AddToSuperHeroList(ClientContext ctx)
+        {
+            var list = ctx.Web.GetListByTitle("Super Heroes");
+            var store = ctx.Site.GetDefaultSiteCollectionTermStore();
+            var SuperPowerTerm = store.GetTerm("{72469CAF-FC43-464B-82C7-F53F9A50D0CE}".ToGuid());
+            var WeaponTerm1 = store.GetTerm("{942A83E8-1042-4678-AB60-8D7C6DCF3475}".ToGuid());
+            var WeaponTerm2 = store.GetTerm("{C41A3416-ABA2-42AD-ADCB-AB530C37D7C2}".ToGuid());
+
+            ctx.Load(store);
+            ctx.Load(SuperPowerTerm);
+            ctx.Load(WeaponTerm1);
+            ctx.Load(WeaponTerm2);
+            ctx.ExecuteQuery();
+             
+            
+            List<KeyValuePair<Guid, String>> weapons = new List<KeyValuePair<Guid, string>>();
+            weapons.Add(new KeyValuePair<Guid, string>(WeaponTerm1.Id, WeaponTerm1.Name));
+            weapons.Add(new KeyValuePair<Guid, string>(WeaponTerm2.Id, WeaponTerm2.Name));
+
+
+            ListItem item = list.AddItem(new ListItemCreationInformation());
+            item["Title"] = "Wolverine";
+            item.Update();
+            item.SetTaxonomyFieldValue("{065C4CAF-735C-4D79-B74B-438DB120E60E}".ToGuid(), SuperPowerTerm.Name, SuperPowerTerm.Id);
+            item.SetTaxonomyFieldValues("{EB647A31-61EF-4751-ABE1-526E523AF002}".ToGuid(), weapons);
+            ctx.ExecuteQuery();
 
 
 
